@@ -12,12 +12,17 @@ module.exports = {
     publicPath: '/static/'
   },
   plugins: [
+      new webpack.optimize.UglifyJsPlugin({
+        mangle: {
+          except: ['$super', '$', 'exports', 'require']
+        }
+      })
   ],
   module: {
     loaders: [{
       test: /\.jsx?$/,
       exclude: /node_modules/,
-      loaders: ['babel-loader'],
+      loaders: ['babel-loader']
     }]
   }
 };
